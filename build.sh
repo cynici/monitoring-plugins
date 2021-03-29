@@ -16,7 +16,7 @@ do
   # Doesn't work on MacOS because container vanishes before file is copied
   #docker cp -L $(docker create --rm monitoring-plugins-${PLATFORM}:$SENSU_GO_ASSET_VERSION true):/$SENSU_GO_ASSET_FILENAME ./assets/
   set -x
-  docker run --rm -v $(pwd)/assets:/assets monitoring-plugins-ubuntu2004:2.6.0 cp /$SENSU_GO_ASSET_FILENAME /assets/
+  docker run --rm -v $(pwd)/assets:/assets monitoring-plugins-${PLATFORM}:$SENSU_GO_ASSET_VERSION cp /$SENSU_GO_ASSET_FILENAME /assets/
   set +x
 done;
 
