@@ -3,6 +3,7 @@ FROM centos:8 as builder
 ARG SENSU_GO_ASSET_NAME="monitoring-plugins-centos8"
 ARG SENSU_GO_ASSET_VERSION="2.2.0"
 ARG PLUGINS="check_http"
+ARG MONITORING_PLUGINS_VERSION=2.2
 
 ADD create-sensu-asset /usr/bin/create-sensu-asset
 
