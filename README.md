@@ -2,6 +2,36 @@
 [![Build Status](https://travis-ci.org/sensu/monitoring-plugins.svg?branch=master)](https://travis-ci.org/sensu/monitoring-plugins)
 # Sensu Assets: Monitoring Plugins
 
+## Notes on repo fork
+
+### Why fork?
+
+1. Update monitoring-plugins version from 2.2 to the current in
+   <https://www.monitoring-plugins.org/download.html>
+
+1. Compile only wanted releases and binaries to save time
+
+1. `check_mysql` and its dependency package were not included in upstream
+
+### How to build new binary
+
+1. Requires docker installed
+
+1. Edit [build.sh](build.sh) e.g. *PLUGINS*, *MONITORING_PLUGINS_VERSION*, *PLATFORMS*, etc.
+
+1. Run `./build.sh` to create 3 new docker images e.g.
+   - monitoring-plugins-ubuntu1604:2.6.0
+   - monitoring-plugins-ubuntu1804:2.6.0
+   - monitoring-plugins-ubuntu2004:2.6.0
+
+1. If completed successful, there should also be tarballs under [assets](assets) folder
+
+1. Extract the wanted binaries and copy them to target hosts
+
+1. The binaries are dynamically linked and will require dependent libraries
+   e.g. */lib/x86_64-linux-gnu/libmysqlclient.so.21* present to run
+   on target hosts
+
 ## Overview
 
 An attempt at packaging individual C plugins from the excellent Monitoring

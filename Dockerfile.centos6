@@ -12,9 +12,9 @@ WORKDIR /usr/lib64/nagios/plugins/
 WORKDIR /
 
 RUN yum groupinstall -y "Development Tools" && yum install -y curl expat-devel openssl openssl-devel net-snmp-utils bind-utils && \
-    curl -s -L -O https://www.monitoring-plugins.org/download/monitoring-plugins-2.2.tar.gz && \
-    tar xzf monitoring-plugins-2.2.tar.gz && \
-    cd monitoring-plugins-2.2 && \
+    curl -s -L -O https://www.monitoring-plugins.org/download/monitoring-plugins-${MONITORING_PLUGINS_VERSION}.tar.gz && \
+    tar xzf monitoring-plugins-${MONITORING_PLUGINS_VERSION}.tar.gz && \
+    cd monitoring-plugins-${MONITORING_PLUGINS_VERSION} && \
     ./configure --prefix=/usr --libexecdir=/usr/lib/monitoring-plugins && \
     make && \
     make install
